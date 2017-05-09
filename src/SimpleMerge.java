@@ -2,6 +2,7 @@
 // 1) GIT 숙달
 // 2) 파일을 불러오기 위한 자바에서 제공하는 JFileChooser의 올바른 사용법 습득.
 // 3) 브런치!!
+// 4) 브런치 & 머지 한 다음의 master로 푸쉬해보는 주석
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;

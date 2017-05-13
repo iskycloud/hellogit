@@ -1,3 +1,3 @@
 # hellogit
 
-LCS 습득
+UI 제작

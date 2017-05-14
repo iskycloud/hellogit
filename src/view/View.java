@@ -2,9 +2,11 @@
  *
  * Created by iskyc on 2017-05-13.
  */
+package view;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 public class View {
     private JFrame frmMain;
@@ -25,7 +27,7 @@ public class View {
     private JTextField txtLeftPath, txtLeftStatus;
     private JTextField txtRightPath, txtRightStatus;
 
-    View() {
+    public View() {
         initFrmMain();
         initPnlWest();
         initPnlEast();
@@ -121,11 +123,11 @@ public class View {
     private void initPnlControls() {
         pnlControls = new JPanel();
 
-        JButton btnCompare = new JButton("Compare");
-        JButton btnMergeLeftToRightAll = new JButton(">>"); 
-        JButton btnMergeLeftToRight = new JButton(">"); 
-        JButton btnMergeRightToLeft = new JButton("<"); 
-        JButton btnMergeRightToLeftAll = new JButton("<<");
+        btnCompare = new JButton("Compare");
+        btnMergeLeftToRightAll = new JButton(">>");
+        btnMergeLeftToRight = new JButton(">");
+        btnMergeRightToLeft = new JButton("<");
+        btnMergeRightToLeftAll = new JButton("<<");
 
         pnlControls.setLayout(new GridLayout(5, 1));
 
@@ -134,5 +136,58 @@ public class View {
         pnlControls.add(btnMergeLeftToRight, 2);
         pnlControls.add(btnMergeRightToLeft, 3);
         pnlControls.add(btnMergeRightToLeftAll, 4);
+    }
+
+    // 현재 J프레임을 리턴해주는 메소드.
+    // 주로 컨트롤러에서 창을 띄울 때 사용함.
+    public JFrame getFrame() {
+        return this.frmMain;
+    }
+
+    // 원하는 텍스트필드를 리턴해주는 메소드.
+    // 주로 컨트롤러에서 이 것을 사용할 것이다.
+    public JTextField getJTextField(String name) {
+        switch ( name ) {
+            case "txtLeftPath":
+                return this.txtLeftPath;
+            case "txtRightPath":
+                return this.txtRightPath;
+        }
+
+        return null;
+    }
+
+    // 버튼들에 대한 액션리스너를 컨트롤러에 추가시킨다.
+    // 그리고, 그 버튼들에 대해 이름을 설정해준다.
+    // 나중에 발생하는 이벤트들을 구별하기 위함임.
+    public void setActionListener(ActionListener al) {
+        btnLeftLoad.addActionListener(al);
+        btnLeftLoad.setName("btnLeftLoad");
+        btnLeftSave.addActionListener(al);
+        btnLeftSave.setName("btnLeftSave");
+        btnLeftSaveAs.addActionListener(al);
+        btnLeftSaveAs.setName("btnLeftSaveAs");
+        btnLeftEdit.addActionListener(al);
+        btnLeftEdit.setName("btnLeftEdit");
+
+        btnRightLoad.addActionListener(al);
+        btnRightLoad.setName("btnRightLoad");
+        btnRightSave.addActionListener(al);
+        btnRightSave.setName("btnRightSave");
+        btnRightSaveAs.addActionListener(al);
+        btnRightSaveAs.setName("btnRightSaveAs");
+        btnRightEdit.addActionListener(al);
+        btnRightEdit.setName("btnRightEdit");
+
+        btnCompare.addActionListener(al);
+        btnCompare.setName("btnCompare");
+        btnMergeLeftToRight.addActionListener(al);
+        btnMergeLeftToRight.setName("btnMergeLeftToRight");
+        btnMergeLeftToRightAll.addActionListener(al);
+        btnMergeLeftToRightAll.setName("btnMergeLeftToRightAll");
+        btnMergeRightToLeft.addActionListener(al);
+        btnMergeRightToLeft.setName("btnMergeRightToLeft");
+        btnMergeRightToLeftAll.addActionListener(al);
+        btnMergeRightToLeftAll.setName("btnMergeRightToLeftAll");
     }
 }

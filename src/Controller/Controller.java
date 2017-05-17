@@ -33,13 +33,13 @@ public class Controller implements ActionListener
         String actionName = ((JButton)e.getSource()).getName();
 
         int returnVal;
-        switch ( actionName ) { // 버튼을 눌렀다!
-            case "btnLeftLoad": // 왼쪽 패널 로드 버튼일 시
-                model.setLeftFileContent();
-                break;
-            case "btnRightLoad": // 오른쪽 패널 로드 버튼일 시
-                model.setRightFileContent();
-                break;
+        if (actionName.equals("btnLeftLoad")) {
+            // 왼쪽 패널 로드 버튼일 시
+            model.setLeftFileContent();
+        }
+        else if (actionName.equals("btnRightLoad")) {
+            // 오른쪽 패널 로드 버튼일 시
+            model.setRightFileContent();
         }
     }
 }

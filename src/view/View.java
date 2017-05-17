@@ -20,8 +20,8 @@ public class View {
     //LeftFile TextArea
     //RightFile TextArea;
 
-    private JButton btnLeftLoad, btnLeftSave, btnLeftSaveAs, btnLeftEdit;
-    private JButton btnRightLoad, btnRightSave, btnRightSaveAs, btnRightEdit;
+    private JButton btnLeftLoad, btnLeftSave, btnLeftEdit;
+    private JButton btnRightLoad, btnRightSave, btnRightEdit;
     private JButton btnCompare, btnMergeLeftToRightAll, btnMergeLeftToRight, btnMergeRightToLeft, btnMergeRightToLeftAll;
     
     private JTextField txtLeftPath, txtLeftStatus;
@@ -59,10 +59,9 @@ public class View {
         pnlLeftFileNorth = new JPanel();
         pnlLeftFileMenu = new JPanel();
 
-        btnLeftLoad = new JButton("L");
-        btnLeftSave = new JButton("S");
-        btnLeftSaveAs = new JButton("SA");
-        btnLeftEdit = new JButton("E");
+        btnLeftLoad = new JButton(new ImageIcon("./img/load.png"));
+        btnLeftSave = new JButton(new ImageIcon("./img/save.png"));
+        btnLeftEdit = new JButton(new ImageIcon("./img/edit.png"));
 
         txtLeftPath = new JTextField();
         txtLeftStatus = new JTextField();
@@ -90,8 +89,7 @@ public class View {
 
         pnlLeftFileMenu.add(btnLeftLoad, 0);
         pnlLeftFileMenu.add(btnLeftSave, 1);
-        pnlLeftFileMenu.add(btnLeftSaveAs, 2);
-        pnlLeftFileMenu.add(btnLeftEdit, 3);
+        pnlLeftFileMenu.add(btnLeftEdit, 2);
     }
 
     private void initPnlEast() {
@@ -100,10 +98,9 @@ public class View {
         pnlRightFileNorth = new JPanel();
         pnlRightFileMenu = new JPanel();
 
-        btnRightLoad = new JButton("L");
-        btnRightSave = new JButton("S");
-        btnRightSaveAs = new JButton("SA");
-        btnRightEdit = new JButton("E");
+        btnRightLoad = new JButton(new ImageIcon("./img/load.png"));
+        btnRightSave = new JButton(new ImageIcon("./img/save.png"));
+        btnRightEdit = new JButton(new ImageIcon("./img/edit.png"));
 
         txtRightPath = new JTextField();
         txtRightStatus = new JTextField();
@@ -130,18 +127,16 @@ public class View {
 
         pnlRightFileMenu.add(btnRightLoad, 0);
         pnlRightFileMenu.add(btnRightSave, 1);
-        pnlRightFileMenu.add(btnRightSaveAs, 2);
-        pnlRightFileMenu.add(btnRightEdit, 3);
+        pnlRightFileMenu.add(btnRightEdit, 2);
     }
 
     private void initPnlControls() {
         pnlControls = new JPanel();
-
-        btnCompare = new JButton("Compare");
-        btnMergeLeftToRightAll = new JButton(">>");
-        btnMergeLeftToRight = new JButton(">");
-        btnMergeRightToLeft = new JButton("<");
-        btnMergeRightToLeftAll = new JButton("<<");
+        btnCompare = new JButton(new ImageIcon("./img/compare.png"));
+        btnMergeLeftToRightAll = new JButton(new ImageIcon("./img/all_ltor.png"));
+        btnMergeLeftToRight = new JButton(new ImageIcon("./img/ltor.png"));
+        btnMergeRightToLeft = new JButton(new ImageIcon("./img/rtol.png"));
+        btnMergeRightToLeftAll = new JButton(new ImageIcon("./img/all_rtol.png"));
 
         pnlControls.setLayout(new GridLayout(5, 1));
 
@@ -161,11 +156,11 @@ public class View {
     // 원하는 텍스트필드를 리턴해주는 메소드.
     // 주로 컨트롤러에서 이 것을 사용할 것이다.
     public JTextField getJTextField(String name) {
-        switch ( name ) {
-            case "txtLeftPath":
-                return this.txtLeftPath;
-            case "txtRightPath":
-                return this.txtRightPath;
+        if (name.equals("txtLeftPath")) {
+            return this.txtLeftPath;
+        }
+        else if (name.equals("txtRightPath")) {
+            return this.txtRightPath;
         }
 
         return null;
@@ -174,11 +169,11 @@ public class View {
     // 원하는 텍스트필드를 리턴해주는 메소드.
     // 주로 컨트롤러에서 이 것을 사용할 것이다.
     public JTextArea getJTextArea(String name) {
-        switch ( name ) {
-            case "txtLeftArea":
-                return this.txtLeftArea;
-            case "txtRightArea":
-                return this.txtRightArea;
+        if (name.equals("txtLeftArea")) {
+            return this.txtLeftArea;
+        }
+        else if (name.equals("txtRightArea")) {
+            return this.txtRightArea;
         }
 
         return null;
@@ -192,8 +187,6 @@ public class View {
         btnLeftLoad.setName("btnLeftLoad");
         btnLeftSave.addActionListener(al);
         btnLeftSave.setName("btnLeftSave");
-        btnLeftSaveAs.addActionListener(al);
-        btnLeftSaveAs.setName("btnLeftSaveAs");
         btnLeftEdit.addActionListener(al);
         btnLeftEdit.setName("btnLeftEdit");
 
@@ -201,8 +194,6 @@ public class View {
         btnRightLoad.setName("btnRightLoad");
         btnRightSave.addActionListener(al);
         btnRightSave.setName("btnRightSave");
-        btnRightSaveAs.addActionListener(al);
-        btnRightSaveAs.setName("btnRightSaveAs");
         btnRightEdit.addActionListener(al);
         btnRightEdit.setName("btnRightEdit");
 

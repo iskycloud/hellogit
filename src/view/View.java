@@ -27,6 +27,9 @@ public class View {
     private JTextField txtLeftPath, txtLeftStatus;
     private JTextField txtRightPath, txtRightStatus;
 
+    private JScrollPane txtLeftScrPane, txtRightScrPane;
+    private JTextArea txtLeftArea, txtRightArea;
+
     public View() {
         initFrmMain();
         initPnlWest();
@@ -64,6 +67,7 @@ public class View {
         txtLeftPath = new JTextField();
         txtLeftStatus = new JTextField();
 
+
         pnlWestBody.setLayout(new BorderLayout());
         pnlLeftFileBody.setLayout(new BorderLayout());
         pnlLeftFileNorth.setLayout(new BorderLayout());
@@ -78,6 +82,11 @@ public class View {
         pnlLeftFileBody.add(txtLeftStatus, BorderLayout.SOUTH);
         pnlLeftFileNorth.add(pnlLeftFileMenu, BorderLayout.NORTH);
         pnlLeftFileNorth.add(txtLeftPath, BorderLayout.SOUTH);
+
+        // ----
+        txtLeftArea = new JTextArea();
+        txtLeftScrPane = new JScrollPane(txtLeftArea);
+        pnlLeftFileBody.add(txtLeftScrPane, BorderLayout.CENTER);
 
         pnlLeftFileMenu.add(btnLeftLoad, 0);
         pnlLeftFileMenu.add(btnLeftSave, 1);
@@ -113,6 +122,11 @@ public class View {
         pnlRightFileBody.add(txtRightStatus, BorderLayout.SOUTH);
         pnlRightFileNorth.add(pnlRightFileMenu, BorderLayout.NORTH);
         pnlRightFileNorth.add(txtRightPath, BorderLayout.SOUTH);
+
+
+        txtRightArea = new JTextArea();
+        txtRightScrPane = new JScrollPane(txtRightArea);
+        pnlRightFileBody.add(txtRightScrPane, BorderLayout.CENTER);
 
         pnlRightFileMenu.add(btnRightLoad, 0);
         pnlRightFileMenu.add(btnRightSave, 1);
@@ -152,6 +166,19 @@ public class View {
                 return this.txtLeftPath;
             case "txtRightPath":
                 return this.txtRightPath;
+        }
+
+        return null;
+    }
+
+    // 원하는 텍스트필드를 리턴해주는 메소드.
+    // 주로 컨트롤러에서 이 것을 사용할 것이다.
+    public JTextArea getJTextArea(String name) {
+        switch ( name ) {
+            case "txtLeftArea":
+                return this.txtLeftArea;
+            case "txtRightArea":
+                return this.txtRightArea;
         }
 
         return null;

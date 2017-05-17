@@ -28,7 +28,6 @@ public class Controller implements ActionListener
     }
 
 
-    @Override
     public void actionPerformed(ActionEvent e) {
         String actionName = ((JButton)e.getSource()).getName();
 
@@ -40,6 +39,9 @@ public class Controller implements ActionListener
         else if (actionName.equals("btnRightLoad")) {
             // 오른쪽 패널 로드 버튼일 시
             model.setRightFileContent();
+        } else if (actionName.equals("btnCompare")) {
+            // 비교 버튼 시
+            model.textCompare();
         }
     }
 }

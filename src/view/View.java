@@ -28,7 +28,7 @@ public class View {
     private JTextField txtRightPath, txtRightStatus;
 
     private JScrollPane txtLeftScrPane, txtRightScrPane;
-    private JTextArea txtLeftArea, txtRightArea;
+    private JTextPane txtLeftTextPane, txtRightTextPane;
 
     public View() {
         initFrmMain();
@@ -83,8 +83,8 @@ public class View {
         pnlLeftFileNorth.add(txtLeftPath, BorderLayout.SOUTH);
 
         // ----
-        txtLeftArea = new JTextArea();
-        txtLeftScrPane = new JScrollPane(txtLeftArea);
+        txtLeftTextPane = new JTextPane();
+        txtLeftScrPane = new JScrollPane(txtLeftTextPane);
         pnlLeftFileBody.add(txtLeftScrPane, BorderLayout.CENTER);
 
         pnlLeftFileMenu.add(btnLeftLoad, 0);
@@ -121,8 +121,8 @@ public class View {
         pnlRightFileNorth.add(txtRightPath, BorderLayout.SOUTH);
 
 
-        txtRightArea = new JTextArea();
-        txtRightScrPane = new JScrollPane(txtRightArea);
+        txtRightTextPane = new JTextPane();
+        txtRightScrPane = new JScrollPane(txtRightTextPane);
         pnlRightFileBody.add(txtRightScrPane, BorderLayout.CENTER);
 
         pnlRightFileMenu.add(btnRightLoad, 0);
@@ -154,7 +154,7 @@ public class View {
     }
 
     // 원하는 텍스트필드를 리턴해주는 메소드.
-    // 주로 컨트롤러에서 이 것을 사용할 것이다.
+    // 주로 모델에서 이 것을 사용할 것이다.
     public JTextField getJTextField(String name) {
         if (name.equals("txtLeftPath")) {
             return this.txtLeftPath;
@@ -166,14 +166,15 @@ public class View {
         return null;
     }
 
-    // 원하는 텍스트필드를 리턴해주는 메소드.
-    // 주로 컨트롤러에서 이 것을 사용할 것이다.
-    public JTextArea getJTextArea(String name) {
-        if (name.equals("txtLeftArea")) {
-            return this.txtLeftArea;
+    // ---------------------------- 수정점!!
+    // 원하는 텍스트판를 리턴해주는 메소드.
+    // 주로 모델에서 이 것을 사용할 것이다.
+    public JTextPane getJTextPane(String name) {
+        if (name.equals("txtLeftTextPane")) {
+            return this.txtLeftTextPane;
         }
-        else if (name.equals("txtRightArea")) {
-            return this.txtRightArea;
+        else if (name.equals("txtRightTextPane")) {
+            return this.txtRightTextPane;
         }
 
         return null;
